@@ -18,6 +18,13 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
         ]);
 
+        User::create([
+            'name' => 'Joe Lohr',
+            'email' => 'jlohr@autorisknow.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+
         User::factory(10)->create();
     }
 }
