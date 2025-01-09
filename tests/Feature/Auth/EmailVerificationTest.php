@@ -1,9 +1,14 @@
 <?php
 
 use App\Models\User;
+use Database\Seeders\DepartmentSeeder;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
+
+beforeEach(function () {
+    $this->seed(DepartmentSeeder::class);
+});
 
 test('email verification screen can be rendered', function () {
     $user = User::factory()->unverified()->create();

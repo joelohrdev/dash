@@ -3,8 +3,13 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
+use Database\Seeders\DepartmentSeeder;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Volt\Volt;
+
+beforeEach(function () {
+    $this->seed(DepartmentSeeder::class);
+});
 
 test('password can be updated', function () {
     $user = User::factory()->create();

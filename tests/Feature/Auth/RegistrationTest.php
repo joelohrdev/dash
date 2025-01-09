@@ -2,7 +2,12 @@
 
 namespace Tests\Feature\Auth;
 
+use Database\Seeders\DepartmentSeeder;
 use Livewire\Volt\Volt;
+
+beforeEach(function () {
+    $this->seed(DepartmentSeeder::class);
+});
 
 test('registration screen can be rendered', function () {
     $response = $this->get('/register');
