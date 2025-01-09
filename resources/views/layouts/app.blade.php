@@ -54,9 +54,12 @@
             <flux:spacer />
 
             <flux:dropdown position="top" align="start" class="max-lg:hidden">
-                <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="Olivia Martin" />
+                <flux:profile
+                    avatar="https://fluxui.dev/img/demo/user.png"
+                    name="{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}"
+                />
 
-                <flux:menu class="space-y-3">
+                <flux:menu class="space-y-5">
                     <flux:navlist variant="outline">
                         <flux:navlist.item icon="cog-6-tooth" href="{{ route('profile') }}">
                             Settings
@@ -112,7 +115,7 @@
         </flux:header>
 
         <flux:main>
-            <flux:heading size="xl" level="1">Good afternoon, Olivia</flux:heading>
+            <flux:heading size="xl" level="1">Good afternoon, {{ auth()->user()->first_name }}</flux:heading>
 
             <flux:subheading size="lg" class="mb-6">Here's what's new today</flux:subheading>
 
