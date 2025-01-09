@@ -129,7 +129,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session' // @phpstan-ignore-line
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*
