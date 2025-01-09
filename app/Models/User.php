@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->belongsTo(Department::class);
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     /**
      * Get the attributes that should be cast.
      *

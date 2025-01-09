@@ -23,41 +23,16 @@
         >
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <flux:brand
-                href="#"
-                logo="https://fluxui.dev/img/demo/logo.png"
-                name="Acme Inc."
-                class="px-2 dark:hidden"
-            />
-            <flux:brand
-                href="#"
-                logo="https://fluxui.dev/img/demo/dark-mode-logo.png"
-                name="Acme Inc."
-                class="hidden px-2 dark:flex"
-            />
+            <x-logo />
 
             <flux:input as="button" variant="filled" placeholder="Search..." icon="magnifying-glass" />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="home" href="{{ route('dashboard') }}">Home</flux:navlist.item>
-                <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item>
-                <flux:navlist.item icon="document-text" href="#">Documents</flux:navlist.item>
-                <flux:navlist.item icon="calendar" href="#">Calendar</flux:navlist.item>
-
-                <flux:navlist.group expandable heading="Favorites" class="hidden lg:grid">
-                    <flux:navlist.item href="#">Marketing site</flux:navlist.item>
-                    <flux:navlist.item href="#">Android app</flux:navlist.item>
-                    <flux:navlist.item href="#">Brand guidelines</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
+            <x-navigation />
 
             <flux:spacer />
 
             <flux:dropdown position="top" align="start" class="max-lg:hidden">
-                <flux:profile
-                    avatar="https://fluxui.dev/img/demo/user.png"
-                    name="{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}"
-                />
+                <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="{{ auth()->user()->full_name }}" />
 
                 <flux:menu class="space-y-5">
                     <flux:navlist variant="outline">
