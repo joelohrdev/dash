@@ -11,6 +11,8 @@ class Index extends Component
 {
     #[Layout('layouts.app')]
     #[On('department-created')]
+    #[On('department-updated')]
+    #[On('department-deleted')]
     public function render()
     {
         return view('livewire.department.index', [
