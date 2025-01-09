@@ -29,8 +29,8 @@ new class extends Component {
         $user = Auth::user();
 
         $validated = $this->validate([
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -84,74 +84,33 @@ new class extends Component {
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div class="grid grid-cols-2 gap-6">
-            <div>
-                <x-input-label for="firstName" :value="__('First Name')" />
-                <x-text-input
-                    wire:model="firstName"
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="firstName"
-                />
-                <x-input-error class="mt-2" :messages="$errors->get('firstName')" />
-            </div>
+            <flux:field>
+                <flux:label>First Name</flux:label>
 
-            <div>
-                <x-input-label for="lastName" :value="__('Last Name')" />
-                <x-text-input
-                    wire:model="lastName"
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="lastName"
-                />
-                <x-input-error class="mt-2" :messages="$errors->get('lastName')" />
-            </div>
+                <flux:input wire:model="firstName" />
+
+                <flux:error name="firstName" />
+            </flux:field>
+
+            <flux:field>
+                <flux:label>Last Name</flux:label>
+
+                <flux:input wire:model="lastName" />
+
+                <flux:error name="lastName" />
+            </flux:field>
         </div>
 
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input
-                wire:model="email"
-                id="email"
-                name="email"
-                type="email"
-                class="mt-1 block w-full"
-                required
-                autocomplete="username"
-            />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+        <flux:field>
+            <flux:label>Email</flux:label>
 
-            @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
-                <div>
-                    <p class="mt-2 text-sm text-gray-800">
-                        {{ __('Your email address is unverified.') }}
+            <flux:input wire:model="email" />
 
-                        <button
-                            wire:click.prevent="sendVerification"
-                            class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
-
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 text-sm font-medium text-green-600">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
-                    @endif
-                </div>
-            @endif
-        </div>
+            <flux:error name="email" />
+        </flux:field>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <flux:button type="submit" variant="primary">Save</flux:button>
 
             <x-action-message class="me-3" on="profile-updated">
                 {{ __('Saved.') }}
