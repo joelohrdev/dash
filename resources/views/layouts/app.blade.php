@@ -34,7 +34,7 @@
             <flux:dropdown position="top" align="start" class="max-lg:hidden">
                 <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="{{ auth()->user()->full_name }}" />
 
-                <flux:menu class="space-y-5">
+                <flux:menu class="space-y-3">
                     <flux:navlist variant="outline">
                         <flux:navlist.item icon="cog-6-tooth" href="{{ route('profile') }}">
                             Settings
@@ -42,72 +42,58 @@
                         <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
                     </flux:navlist>
 
-                    {{-- <flux:menu.separator /> --}}
-
                     <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
                         <flux:radio value="light" icon="sun" />
                         <flux:radio value="dark" icon="moon" />
                         <flux:radio value="system" icon="computer-desktop" />
                     </flux:radio.group>
 
-                    {{-- <flux:menu.separator /> --}}
-
                     <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
                 </flux:menu>
             </flux:dropdown>
         </flux:sidebar>
 
-        <flux:header
-            class="!block border-b border-zinc-200 bg-white lg:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900"
-        >
-            <flux:navbar class="w-full lg:hidden">
-                <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+        <flux:header class="lg:hidden">
+            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-                <flux:spacer />
+            <flux:spacer />
 
-                <flux:dropdown position="top" align="start">
-                    <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
+            <flux:dropdown position="top" alignt="start">
+                <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
 
-                    <flux:menu class="space-y-5">
-                        <flux:navlist variant="outline">
-                            <flux:navlist.item icon="cog-6-tooth" href="{{ route('profile') }}">
-                                Settings
-                            </flux:navlist.item>
-                            <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
-                        </flux:navlist>
+                <flux:menu>
+                    <flux:menu.radio.group>
+                        <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
+                        <flux:menu.radio>Truly Delta</flux:menu.radio>
+                    </flux:menu.radio.group>
 
-                        {{-- <flux:menu.separator /> --}}
+                    <flux:menu.separator />
 
-                        <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
-                            <flux:radio value="light" icon="sun" />
-                            <flux:radio value="dark" icon="moon" />
-                            <flux:radio value="system" icon="computer-desktop" />
-                        </flux:radio.group>
-
-                        {{-- <flux:menu.separator /> --}}
-
-                        <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
-                    </flux:menu>
-                </flux:dropdown>
-            </flux:navbar>
-
-            <flux:navbar scrollable>
-                <flux:navbar.item href="#" current>Dashboard</flux:navbar.item>
-                <flux:navbar.item badge="32" href="#">Orders</flux:navbar.item>
-                <flux:navbar.item href="#">Catalog</flux:navbar.item>
-                <flux:navbar.item href="#">Configuration</flux:navbar.item>
-            </flux:navbar>
+                    <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
+                </flux:menu>
+            </flux:dropdown>
         </flux:header>
 
         <flux:main>
-            <flux:heading size="xl" level="1">Good afternoon, {{ auth()->user()->first_name }}</flux:heading>
-
-            <flux:subheading size="lg" class="mb-6">Here's what's new today</flux:subheading>
+            @if (isset($pageTitle))
+                <flux:heading size="lg" level="1" class="mb-3">{{ $pageTitle }}</flux:heading>
+            @else
+                <flux:heading size="lg" level="1" class="mb-3">
+                    Good afternoon, {{ auth()->user()->first_name }}
+                </flux:heading>
+            @endif
 
             <flux:separator variant="subtle" />
 
-            {{ $slot }}
+            <main>
+                <div class="mt-3">
+                    {{ $slot }}
+                </div>
+            </main>
         </flux:main>
         @fluxScripts
+        @persist('toast')
+            <flux:toast />
+        @endpersist
     </body>
 </html>
