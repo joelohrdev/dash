@@ -68,13 +68,23 @@
                 <flux:dropdown position="top" align="start">
                     <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
 
-                    <flux:menu>
-                        <flux:menu.radio.group>
-                            <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-                            <flux:menu.radio>Truly Delta</flux:menu.radio>
-                        </flux:menu.radio.group>
+                    <flux:menu class="space-y-5">
+                        <flux:navlist variant="outline">
+                            <flux:navlist.item icon="cog-6-tooth" href="{{ route('profile') }}">
+                                Settings
+                            </flux:navlist.item>
+                            <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
+                        </flux:navlist>
 
-                        <flux:menu.separator />
+                        {{-- <flux:menu.separator /> --}}
+
+                        <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
+                            <flux:radio value="light" icon="sun" />
+                            <flux:radio value="dark" icon="moon" />
+                            <flux:radio value="system" icon="computer-desktop" />
+                        </flux:radio.group>
+
+                        {{-- <flux:menu.separator /> --}}
 
                         <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
                     </flux:menu>

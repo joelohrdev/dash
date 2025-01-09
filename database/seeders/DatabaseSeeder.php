@@ -18,13 +18,15 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
         ]);
 
-        User::create([
+        $user = User::create([
             'first_name' => 'Joe',
             'last_name' => 'Lohr',
             'email' => 'jlohr@autorisknow.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
         ]);
+
+        $user->assignRole('Super Admin');
 
         User::factory(10)->create();
     }

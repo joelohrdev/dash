@@ -45,8 +45,7 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'delete-audits']);
         Permission::create(['name' => 'view-audits']);
 
-        Role::create(['name' => 'super-admin']);
-
+        Role::create(['name' => 'Super Admin']);
         $consultantRole = Role::create(['name' => 'Consultant']);
         $ownerRole = Role::create(['name' => 'Owner']);
         $qiRole = Role::create(['name' => 'Qualified Individual']);
