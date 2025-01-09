@@ -23,7 +23,6 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid(),
             'name' => $this->faker->randomElement($this->departments),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
