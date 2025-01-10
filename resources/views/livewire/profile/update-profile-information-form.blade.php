@@ -7,8 +7,8 @@ use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public string $firstName = '';
-    public string $lastName = '';
+    public string $first_name = '';
+    public string $last_name = '';
     public string $email = '';
 
     /**
@@ -16,8 +16,8 @@ new class extends Component {
      */
     public function mount(): void
     {
-        $this->firstName = Auth::user()->first_name;
-        $this->lastName = Auth::user()->last_name;
+        $this->first_name = Auth::user()->first_name;
+        $this->last_name = Auth::user()->last_name;
         $this->email = Auth::user()->email;
     }
 
@@ -29,8 +29,8 @@ new class extends Component {
         $user = Auth::user();
 
         $validated = $this->validate([
-            'firstName' => ['required', 'string', 'max:255'],
-            'lastName' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -87,17 +87,17 @@ new class extends Component {
             <flux:field>
                 <flux:label>First Name</flux:label>
 
-                <flux:input wire:model="firstName" />
+                <flux:input wire:model="first_name" />
 
-                <flux:error name="firstName" />
+                <flux:error name="first_name" />
             </flux:field>
 
             <flux:field>
                 <flux:label>Last Name</flux:label>
 
-                <flux:input wire:model="lastName" />
+                <flux:input wire:model="last_name" />
 
-                <flux:error name="lastName" />
+                <flux:error name="last_name" />
             </flux:field>
         </div>
 

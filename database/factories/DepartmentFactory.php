@@ -23,7 +23,7 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->randomElement($this->departments),
+            'name' => $this->faker->randomElement($this->departments)->unique(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
