@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component {
+new #[Layout('layouts.guest')] class extends Component
+{
     public LoginForm $form;
 
     /**
@@ -41,7 +42,7 @@ new #[Layout('layouts.guest')] class extends Component {
         <flux:field class="mt-4">
             <flux:label>Password</flux:label>
 
-            <flux:input wire:model="form.password" type="password" required />
+            <flux:input wire:model="form.password" type="password" required viewable />
 
             <flux:error name="form.password" />
         </flux:field>
