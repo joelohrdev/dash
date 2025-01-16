@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->foreignIdFor(DealerGroup::class)->constrained();
+            $table->string('name');
             $table->string('address');
             $table->string('city');
             $table->string('state');

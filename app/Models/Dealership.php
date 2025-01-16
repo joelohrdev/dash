@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\State;
+use App\Observers\DealershipObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[ObservedBy(DealershipObserver::class)]
 class Dealership extends Model
 {
     use HasFactory;
@@ -33,7 +37,7 @@ class Dealership extends Model
             'name' => 'string',
             'address' => 'string',
             'city' => 'string',
-            'state' => 'string',
+            'state' => State::class,
             'postal_code' => 'string',
         ];
     }
