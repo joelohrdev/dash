@@ -75,13 +75,22 @@
         </flux:header>
 
         <flux:main>
-            @if (isset($pageTitle))
-                <flux:heading size="lg" level="1" class="mb-3">{{ $pageTitle }}</flux:heading>
-            @else
-                <flux:heading size="lg" level="1" class="mb-3">
-                    Good afternoon, {{ auth()->user()->first_name }}
-                </flux:heading>
-            @endif
+            <div class="mb-3 flex items-center justify-between">
+                <div>
+                    @if (isset($pageTitle))
+                        <flux:heading size="lg" level="1">{{ $pageTitle }}</flux:heading>
+                    @else
+                        <flux:heading size="lg" level="1">
+                            Good afternoon, {{ auth()->user()->first_name }}
+                        </flux:heading>
+                    @endif
+                </div>
+                <div>
+                    @if (isset($actions))
+                        {{ $actions }}
+                    @endif
+                </div>
+            </div>
 
             <flux:separator variant="subtle" />
 

@@ -3,6 +3,9 @@
     <flux:navlist.item wire:navigate icon="inbox" href="{{ route('department.index') }}">
         Departments
     </flux:navlist.item>
+    <flux:navlist.item wire:navigate icon="building-office" href="{{ route('dealership.index') }}">
+        Dealerships
+    </flux:navlist.item>
     <flux:navlist.item wire:navigate icon="document-text" href="#">Documents</flux:navlist.item>
     <flux:navlist.item wire:navigate icon="calendar" href="#">Calendar</flux:navlist.item>
 

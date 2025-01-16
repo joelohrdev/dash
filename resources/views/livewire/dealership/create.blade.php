@@ -64,6 +64,7 @@
             </flux:field>
 
             <flux:button type="submit" variant="primary">Submit</flux:button>
+            <flux:button wire:navigate href="{{ route('dealership.index') }}">Cancel</flux:button>
         </form>
     </div>
 </div>
